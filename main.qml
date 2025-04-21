@@ -55,4 +55,5 @@ Item {
        anchors.topMargin: 20 + mainWindow.sceneTopMargin
        anchors.bottomMargin: 20 + mainWindow.sceneBottomMargin
     } 
+  }
 }
