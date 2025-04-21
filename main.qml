@@ -6,10 +6,9 @@ import org.qgis
 import Theme
 
 Item {
-  id: plugin
+  id: ventana 
 
   property var mainWindow: iface.mainWindow()
-  property var positionSource: iface.findItemByObjectName('positionSource')
 
   Component.onCompleted: {
     iface.addItemToPluginsToolbar(pluginButton)
@@ -23,12 +22,37 @@ Item {
     round: true
     
     onClicked: {
-      let position = positionSource.positionInformation
-      if (positionSource.active && position.latitudeValid && position.longitudeValid) {
-        mainWindow.displayToast(qsTr('Your current position is ' + position.latitude + ', ' +position.longitude))
-      } else {
-        mainWindow.displayToast(qsTr('Your current position is unknown'))
-      }
+       ventanaDialog.open()
     }
   }
+
+   Dialog
+    {
+      id: ventanaDialog
+      parent: iface.mainWindow().contentItem
+      width: 300
+      height: 200
+      modal: true
+      title: "Ventana de ejemplo"
+
+      z: 10000
+      x: (parent.width - width) / 2
+      y: (parent.height - height) / 2
+
+      Rectangle 
+      {
+       color: "black"
+       opacity: 0.8
+       anchors.fill: parent
+      }
+
+    ColumnLayout 
+    {
+       id: aboutContainer
+       spacing: 6
+       anchors.fill: parent
+       anchors.margins: 20
+       anchors.topMargin: 20 + mainWindow.sceneTopMargin
+       anchors.bottomMargin: 20 + mainWindow.sceneBottomMargin
+    } 
 }
