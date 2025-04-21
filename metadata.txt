@@ -1,0 +1,7 @@
+[general]
+name=Plugin Ventana
+description=QField plugin ventana
+author=alfredo.inegi.org.mx
+icon=icon.svg
+version=0.1
+homepage=https://www.inegi.org.mx
