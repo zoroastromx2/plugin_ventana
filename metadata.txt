@@ -3,5 +3,5 @@ name=Plugin Ventana
 description=QField plugin ventana
 author=alfredo.inegi.org.mx
 icon=icon_window.svg
-version=0.1.4.2
+version=0.1.4.3
 homepage=https://www.inegi.org.mx

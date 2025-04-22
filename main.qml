@@ -103,12 +103,8 @@ Item {
                             onClicked: Qt.openUrlExternally("https://qfield.org/")
                           }
 
-                          Label {
-                                        text: "Sistema de Referencia:"
-                                        font.bold: true
-                                    }
-
-                          Label {
+                          Label
+                          {
                             Layout.fillWidth: true
                             Layout.alignment: Qt.AlignCenter
                             horizontalAlignment: Text.AlignHCenter
@@ -132,6 +128,38 @@ Item {
                             onLinkActivated: link => Qt.openUrlExternally(link)
                           }
                         }
+                ColumnLayout {
+                  id: opengisPart
+                  Layout.fillWidth: true
+                  Layout.fillHeight: true
+
+                  MouseArea {
+                    Layout.preferredWidth: 91
+                    Layout.preferredHeight: 113
+                    Layout.alignment: Qt.AlignHCenter
+                    Image {
+                      id: opengisLogo
+                      width: parent.width
+                      height: parent.height
+                      fillMode: Image.PreserveAspectFit
+                      source: "qrc:/images/opengis-logo.svg"
+                      sourceSize.width: width * screen.devicePixelRatio
+                      sourceSize.height: height * screen.devicePixelRatio
+                    }
+                    onClicked: Qt.openUrlExternally("https://opengis.ch")
+                  }
+
+                  Label {
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    font: Theme.strongFont
+                    color: Theme.light
+                    textFormat: Text.RichText
+                    text: qsTr("Desarrolado por") + '<br><a href="https://opengis.ch">OPENGIS.ch</a>'
+                    onLinkActivated: link => Qt.openUrlExternally(link)
+                  }
+                }
 
 
             }
