@@ -104,6 +104,11 @@ Item {
                           }
 
                           Label {
+                                        text: "Sistema de Referencia:"
+                                        font.bold: true
+                                    }
+
+                          Label {
                             Layout.fillWidth: true
                             Layout.alignment: Qt.AlignCenter
                             horizontalAlignment: Text.AlignHCenter
