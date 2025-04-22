@@ -227,11 +227,34 @@ Item {
       }
     }
 
+  }
+
+    QfMenu {
+      id: linksMenu
+      title: qsTr("Links Menu")
+
+      MenuItem {
+        text: qsTr('Changelog')
+
+        font: Theme.defaultFont
+        height: 48
+        leftPadding: Theme.menuItemLeftPadding
+        icon.source: Theme.getThemeVectorIcon('ic_speaker_white_24dp')
+
+        onTriggered: {
+          changelogPopup.open();
+        }
+      }
+    }
+
+    Keys.onReleased: event => {
+      if (event.key === Qt.Key_Back || event.key === Qt.Key_Escape) {
+        event.accepted = true;
+        visible = false;
+      }
+    }
 
 
-
-
-      } 
   }
 
 
