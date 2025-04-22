@@ -25,8 +25,9 @@ Item {
        ventanaDialog.open()
     }
   }
+}
 
-   Dialog
+  Dialog
     {
       id: ventanaDialog
       parent: iface.mainWindow().contentItem
@@ -56,4 +57,3 @@ Item {
        anchors.bottomMargin: 20 + mainWindow.sceneBottomMargin
     } 
   }
-}
