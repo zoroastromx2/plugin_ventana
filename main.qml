@@ -29,7 +29,7 @@ Item {
   }
 
   Dialog
-    {
+  {
       id: ventanaDialog
       parent: iface.mainWindow().contentItem
       width: 300
@@ -56,7 +56,28 @@ Item {
        anchors.margins: 20
        anchors.topMargin: 20 + mainWindow.sceneTopMargin
        anchors.bottomMargin: 20 + mainWindow.sceneBottomMargin
-    } 
+
+         ScrollView 
+         {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+            ScrollBar.vertical: QfScrollBar 
+            {
+            }
+            contentItem: information
+            contentWidth: information.width
+            contentHeight: information.height
+            clip: true
+
+            MouseArea 
+            {
+              anchors.fill: parent
+              onClicked: aboutPanel.visible = false
+            }
+          }
+
+      } 
   }
 
 
