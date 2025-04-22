@@ -5,6 +5,8 @@ import org.qfield
 import org.qgis
 import Theme
 
+import QtQuick.Layouts 1.12
+
 Item {
   id: ventana 
 
@@ -25,7 +27,6 @@ Item {
        ventanaDialog.open()
     }
   }
-}
 
   Dialog
     {
@@ -57,3 +58,8 @@ Item {
        anchors.bottomMargin: 20 + mainWindow.sceneBottomMargin
     } 
   }
+
+
+}
+
+ 
