@@ -33,7 +33,7 @@ Item {
       id: ventanaDialog
       parent: iface.mainWindow().contentItem
       width: 800
-      height: 600
+      height: 800
       modal: true
       title: "Ventana de ejemplo"
 
@@ -156,7 +156,7 @@ Item {
                     font: Theme.strongFont
                     color: Theme.light
                     textFormat: Text.RichText
-                    text: qsTr("Desarrolado por") + '<br><a href="https://opengis.ch">OPENGIS.ch</a>'
+                    text: qsTr("Desarrollado por") + '<br><a href="https://opengis.ch">OPENGIS.ch</a>'
                     onLinkActivated: link => Qt.openUrlExternally(link)
                   }
                 }
@@ -207,9 +207,25 @@ Item {
         Layout.fillWidth: true
         icon.source: Theme.getThemeVectorIcon('ic_sponsor_white_24dp')
 
-        text: qsTr('Support QField')
+        text: qsTr('Apoya a QField')
         onClicked: Qt.openUrlExternally("https://github.com/sponsors/opengisch")
       }
+    QfButton {
+      id: linksButton
+      dropdown: true
+      Layout.fillWidth: true
+      icon.source: Theme.getThemeVectorIcon('ic_book_white_24dp')
+
+      text: qsTr('Documentación')
+
+      onClicked: {
+        Qt.openUrlExternally("https://docs.qfield.org/");
+      }
+
+      onDropdownClicked: {
+        linksMenu.popup(linksButton.width - linksMenu.width + 10, linksButton.y + 10);
+      }
+    }
 
 
 
