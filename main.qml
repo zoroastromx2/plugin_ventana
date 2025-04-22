@@ -168,6 +168,38 @@ Item {
 
 
           }
+    Label 
+    {
+      id: qfieldAppDirectoryLabel
+      Layout.fillWidth: true
+      Layout.maximumWidth: parent.width
+      Layout.alignment: Qt.AlignCenter
+      Layout.bottomMargin: 10
+      horizontalAlignment: Text.AlignHCenter
+      font: Theme.tinyFont
+      color: Theme.secondaryTextColor
+      textFormat: Text.RichText
+      wrapMode: Text.WordWrap
+
+      text: {
+        let label = '';
+        let isDesktopPlatform = Qt.platform.os !== "ios" && Qt.platform.os !== "android";
+        let dataDirs = platformUtilities.appDataDirs();
+        if (dataDirs.length > 0) {
+          label = dataDirs.length > 1 ? qsTr('QField app directories') : qsTr('QField app directory');
+          for (let dataDir of dataDirs) {
+            if (isDesktopPlatform) {
+              label += '<br><a href="' + UrlUtils.fromString(dataDir) + '">' + dataDir + '</a>';
+            } else {
+              label += '<br>' + dataDir;
+            }
+          }
+        }
+        return label;
+      }
+
+      onLinkActivated: link => Qt.openUrlExternally(link)
+    }
 
       } 
   }
