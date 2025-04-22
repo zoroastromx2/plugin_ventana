@@ -32,8 +32,8 @@ Item {
   {
       id: ventanaDialog
       parent: iface.mainWindow().contentItem
-      width: 300
-      height: 200
+      width: 800
+      height: 600
       modal: true
       title: "Ventana de ejemplo"
 
