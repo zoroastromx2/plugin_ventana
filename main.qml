@@ -73,7 +73,7 @@ Item {
             MouseArea 
             {
               anchors.fill: parent
-              onClicked: aboutPanel.visible = false
+              onClicked: ventanaDialog.visible = false
             }
           }
 
