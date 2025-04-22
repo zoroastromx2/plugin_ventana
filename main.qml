@@ -75,11 +75,60 @@ Item {
               anchors.fill: parent
               onClicked: ventanaDialog.visible = false
             }
-            ColumnLayout {
+            ColumnLayout
+            {
                 id: information
                 spacing: 6
                 width: aboutPanel.width - 40
                 height: Math.max(mainWindow.height - sponsorshipButton.height - linksButton.height - qfieldAppDirectoryLabel.height - aboutContainer.spacing * 3 - aboutContainer.anchors.topMargin - aboutContainer.anchors.bottomMargin - 10, qfieldPart.height + opengisPart.height + spacing)
+
+                ColumnLayout {
+                          id: qfieldPart
+                          Layout.fillWidth: true
+                          Layout.fillHeight: true
+
+                          MouseArea {
+                            Layout.preferredWidth: 138
+                            Layout.preferredHeight: 138
+                            Layout.alignment: Qt.AlignHCenter
+                            Image {
+                              id: qfieldLogo
+                              width: parent.width
+                              height: parent.height
+                              fillMode: Image.PreserveAspectFit
+                              source: "qrc:/images/qfield_logo.svg"
+                              sourceSize.width: width * screen.devicePixelRatio
+                              sourceSize.height: height * screen.devicePixelRatio
+                            }
+                            onClicked: Qt.openUrlExternally("https://qfield.org/")
+                          }
+
+                          Label {
+                            Layout.fillWidth: true
+                            Layout.alignment: Qt.AlignCenter
+                            horizontalAlignment: Text.AlignHCenter
+                            font: Theme.strongFont
+                            color: Theme.light
+                            textFormat: Text.RichText
+                            wrapMode: Text.WordWrap
+
+                            text: {
+                              let links = '<a href="https://github.com/opengisch/QField/commit/' + gitRev + '">' + gitRev.substr(0, 6) + '</a>';
+                              if (appVersion && appVersion !== '1.0.0') {
+                                links += ' <a href="https://github.com/opengisch/QField/releases/tag/' + appVersion + '">' + appVersion + '</a>';
+                              }
+                              // the `qgisVersion` has the format `<int>.<int>.<int>-<any text>`, so we get everything before the first `-`
+                              const qgisVersionWithoutName = qgisVersion.split("-", 1)[0];
+                              const dependencies = [["QGIS", qgisVersionWithoutName], ["GDAL/OGR", gdalVersion], ["Qt", qVersion]];
+                              const dependenciesStr = dependencies.map(pair => pair.join(" ")).join(" | ");
+                              return "QField<br>" + appVersionStr + " (" + links + ")<br>" + dependenciesStr;
+                            }
+
+                            onLinkActivated: link => Qt.openUrlExternally(link)
+                          }
+                        }
+
+
             }
 
 
